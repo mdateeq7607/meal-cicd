@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meal_app/models/meal.dart';
 import 'package:flutter_meal_app/screens/meal_details.dart';
-import 'package:flutter_meal_app/widgets/custom_container.dart';
 import 'package:flutter_meal_app/widgets/meal_item.dart';
 
 class MealsScreen extends StatelessWidget {
@@ -28,8 +27,7 @@ class MealsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget content = DeviceContainer(
-      context: context,
+    Widget content = Container(
       child: ListView.builder(
         itemCount: meals.length,
         itemBuilder: (ctx, index) => MealItem(
@@ -46,7 +44,7 @@ class MealsScreen extends StatelessWidget {
           children: const [
             Text('After PIPELINE'),
             SizedBox(height: 16),
-            Text('1'),
+            Text('2'),
           ],
         ),
       );

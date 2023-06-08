@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meal_app/models/meal.dart';
-import 'package:flutter_meal_app/models/device_info.dart';
-import 'package:flutter_meal_app/widgets/custom_container.dart';
-import '../models/device_info.dart';
 class MealDetailsScreen extends StatelessWidget {
   const MealDetailsScreen({
     super.key,
@@ -27,8 +24,7 @@ class MealDetailsScreen extends StatelessWidget {
                 icon: Icon(Icons.star)),
           ],
         ),
-        body: DeviceContainer(
-          context: context,
+        body: Container(
           child: SingleChildScrollView(
             child: Column(
               children: [

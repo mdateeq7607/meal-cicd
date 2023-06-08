@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meal_app/screens/categories.dart';
 import 'package:flutter_meal_app/screens/meals.dart';
 import 'package:flutter_meal_app/models/meal.dart';
-import 'package:flutter_meal_app/widgets/custom_container.dart';
-import 'package:flutter_meal_app/widgets/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen ({super.key});
