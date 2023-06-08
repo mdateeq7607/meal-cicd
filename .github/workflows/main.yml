@@ -18,7 +18,14 @@ jobs:
         with:
           channel: 'stable'
       - run: flutter pub get
-      - run: flutter build web
+     # - run: flutter build web
+      - run: flutter format --set-exit-if-changed .
+      - run: flutter analyze .
+      - run: flutter build apk
+      - uses: actions/upload-artifact@v1
+        with:
+          name: release-apk
+          path: build/app/outputs/apk/release/app-release.apk
 
       # copy file for netlify.toml
       - name: Copy build settings to build folder
