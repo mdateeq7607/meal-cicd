@@ -5,6 +5,7 @@ import 'package:flutter_meal_app/models/meal.dart';
 import 'package:flutter_meal_app/widgets/category_grid_item.dart';
 import 'package:flutter_meal_app/screens/meals.dart';
 import 'package:flutter_meal_app/models/category.dart';
+import 'package:flutter_meal_app/widgets/custom_container.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key, required this.onToggleFavo,});
@@ -28,20 +29,23 @@ class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-      return GridView(
-        padding: const EdgeInsets.all(20),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 3 / 2,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
-        ),
-        children: [
-            for (final category in availableCategories)
-              CategoryGridItem(category: category, onSelectCategory: () {
-                _selectCategory(context, category);
-              },)
-      ],);
+      return DeviceContainer(
+        context: context,
+        child: GridView(
+          padding: const EdgeInsets.all(20),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 3 / 2,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
+          ),
+          children: [
+              for (final category in availableCategories)
+                CategoryGridItem(category: category, onSelectCategory: () {
+                  _selectCategory(context, category);
+                },)
+        ],),
+      );
 
   }
 }
