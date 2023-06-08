@@ -28,8 +28,8 @@ jobs:
           path: build/app/outputs/apk/release/app-release.apk
 
       # copy file for netlify.toml
-      - name: Copy build settings to build folder
-        run: cp netlify.toml build/web/
+      #- name: Copy build settings to build folder
+       # run: cp netlify.toml build/web/
 
       # deploy application to netlify
       - name: Deploy production to Netlify
