@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meal_app/screens/tabs.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_meal_app/models/device_info.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
-import 'dart:io' show Platform;
 
 
 final theme = ThemeData(
