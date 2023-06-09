@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "995558554806",
-    "project_id": "flutter-meal-3dd2f",
-    "storage_bucket": "flutter-meal-3dd2f.appspot.com"
+    "project_number": "528029387884",
+    "project_id": "meals-cicd",
+    "storage_bucket": "meals-cicd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:995558554806:android:b918f9bd4beba93d13ba17",
+        "mobilesdk_app_id": "1:528029387884:android:9b6f456c341f0ff2aa1c49",
         "android_client_info": {
           "package_name": "com.example.flutter_meal_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "995558554806-cc67h2ok55m4pb5vbvc8039cd3lfh7a9.apps.googleusercontent.com",
+          "client_id": "528029387884-ru6sg489v4612tm9g47hf27m6bl0i2gv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD8edwYCM0gsRaUWvKqi5KDs6sI3ZIvH1M"
+          "current_key": "AIzaSyBoeMnxTORvJiJ3_YclW3oMYL6I1hgBLSk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "995558554806-cc67h2ok55m4pb5vbvc8039cd3lfh7a9.apps.googleusercontent.com",
+              "client_id": "528029387884-ru6sg489v4612tm9g47hf27m6bl0i2gv.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
