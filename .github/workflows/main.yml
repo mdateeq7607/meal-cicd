@@ -227,9 +227,10 @@ jobs:
         with:
           channel: 'dev'
         env:
-          KEY_JKS: ${{ secrets.KEY_JKS }}
-          KEY_PASSWORD: ${{ secrets.ALIAS_PASSWORD }}
-          ALIAS_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+#          KEY_JKS: ${{ secrets.KEY_JKS }}
+#          KEY_PASSWORD: ${{ secrets.ALIAS_PASSWORD }}
+#          ALIAS_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
           run: echo $KEY_JKS > key.jks && flutter pub get && flutter test && flutter build apk --release
       - uses: actions/upload-artifact@v1
         with:
