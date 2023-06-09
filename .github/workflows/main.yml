@@ -53,10 +53,16 @@ jobs:
 #        run: gradle wrapper
 #      - name: build release
 #        run: ./gradlew assembleRelease
+      - run: flutter build apk
+      - uses: actions/upload-artifact@master
+        with:
+          name: apk-release
+          path: app/build/app/outputs/bundle/release/app-release.apk
+
       - name: upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{secrets.FIREBASE_APP_ID}}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: testers
-          file: app/build/outputs/apk/release/app-release-unsigned.apk
+          file: app/build/outputs/apk/release/app-release.apk
