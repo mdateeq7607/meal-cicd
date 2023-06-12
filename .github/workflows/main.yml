@@ -31,7 +31,7 @@ jobs:
           netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
           build-dir: './build/web'
-          comment-on-commit: true
+          comment-on-commit: false
 
 
 #name: Build and Release
