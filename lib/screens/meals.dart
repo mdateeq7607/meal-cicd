@@ -44,7 +44,7 @@ class MealsScreen extends StatelessWidget {
           children: const [
             Text('After PIPELINE'),
             SizedBox(height: 16),
-            Text('Deployed to Netlifyyy'),
+            Text('Deployed to Netlif 3'),
           ],
         ),
       );
