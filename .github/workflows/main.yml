@@ -255,8 +255,9 @@ jobs:
 
   build_web:
     needs: setup
-    runs-on: ubuntu-latest
+#    runs-on: ubuntu-latest
     steps:
+      - channel: 'stable'
       - run: flutter build web
 
       # copy file for netlify.toml
@@ -275,8 +276,9 @@ jobs:
 
   build_android:
     needs: setup
-    runs-on: ubuntu-latest
+#    runs-on: ubuntu-latest
     steps:
+      - channel: 'stable'
       - run: flutter build apk
 
 
