@@ -27,11 +27,11 @@ jobs:
       - name: Deploy production to Netlify
         uses: South-Paw/action-netlify-deploy@v1.2.0
         with:
-          github-token: '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'
+          github-token: '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'
           netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
           build-dir: './build/web'
-          comment-on-commit: true
+          comment-on-commit: false
 
 
 #name: Build and Release
