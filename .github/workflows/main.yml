@@ -138,7 +138,102 @@
 #          artifacts: "build/app/outputs/apk/debug/*.apk"
 #          token: "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"
 
-name: Flutter CI
+#name: Flutter CI
+#
+#on:
+#  push:
+#    branches:
+#      - main
+#
+#jobs:
+#  build:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout repository
+#        uses: actions/checkout@v2
+#      - name: Set up Java
+#        uses: actions/setup-java@v1
+#        with:
+#          java-version: '12.x'
+#      - name: Set up Flutter
+#        uses: subosito/flutter-action@v2
+#        with:
+#          flutter-version: stable
+#
+#  build-web:
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Build web
+#        run: flutter build web
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#  build-android:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - uses: actions/setup-java@v1
+#        with:
+#          java-version: '12.x'
+#      - uses: subosito/flutter-action@v2
+#        with:
+#          channel: 'stable'
+#      - run: flutter pub get
+#      - run: flutter build web
+#
+#      # copy file for netlify.toml
+#      - name: Copy build settings to build folder
+#        run: cp netlify.toml build/web/
+#
+#      # deploy application to netlify
+#      - name: Deploy production to Netlify
+#        uses: South-Paw/action-netlify-deploy@v1.2.0
+#        with:
+#          github-token: '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'
+#          netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+#          netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
+#          build-dir: './build/web'
+#          comment-on-commit: false
+#
+#
+#  build-web:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v1
+#      - uses: actions/setup-java@v1
+#        with:
+#          java-version: '12.x'
+#      - uses: subosito/flutter-action@v1
+#        with:
+#          channel: 'beta'
+#      - run: flutter pub get
+#      #      - run: flutter format --set-exit-if-changed .
+#      #      - run: flutter analyze .
+#      - run: flutter build apk
+#      - uses: actions/upload-artifact@v1
+#        with:
+#          name: release-apk
+#          path: build/app/outputs/apk/release/app-release.apk
+#
+#      - name: upload artifact to Firebase App Distribution
+#        uses: wzieba/Firebase-Distribution-Github-Action@v1
+#        with:
+#          appId: ${{secrets.FIREBASE_APP_ID}}
+#          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+#          groups: testers
+#          file: build/app/outputs/apk/release/app-release.apk
+
+
+name: build pipeline for Web and Android
 
 on:
   push:
@@ -146,21 +241,47 @@ on:
       - main
 
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
-      - uses: subosito/flutter-action@v1
+      - uses: subosito/flutter-action@v2
         with:
-          channel: 'beta'
+          channel: 'stable'
       - run: flutter pub get
-#      - run: flutter format --set-exit-if-changed .
-#      - run: flutter analyze .
+
+  build_web:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - run: flutter build web
+
+      # copy file for netlify.toml
+      - name: Copy build settings to build folder
+        run: cp netlify.toml build/web/
+
+      # deploy application to netlify
+      - name: Deploy production to Netlify
+        uses: South-Paw/action-netlify-deploy@v1.2.0
+        with:
+          github-token: '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'
+          netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
+          build-dir: './build/web'
+          comment-on-commit: false
+
+  build_android:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
       - run: flutter build apk
-      - uses: actions/upload-artifact@v1
+
+
+      - name: Deploy Android release
+        uses: actions/upload-artifact@v1
         with:
           name: release-apk
           path: build/app/outputs/apk/release/app-release.apk
@@ -172,4 +293,3 @@ jobs:
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: testers
           file: build/app/outputs/apk/release/app-release.apk
-
