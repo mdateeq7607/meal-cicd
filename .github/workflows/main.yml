@@ -258,8 +258,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: subosito/flutter-action@v2
-          with:
-            channel: 'stable'
+        with:
+          channel: 'stable'
       - run: flutter pub get
       - run: flutter build web
 
@@ -282,8 +282,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: subosito/flutter-action@v2
-          with:
-            channel: 'stable'
+        with:
+          channel: 'stable'
       - run: flutter pub get
       - run: flutter build apk
 
