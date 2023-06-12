@@ -255,9 +255,12 @@ jobs:
 
   build_web:
     needs: setup
-#    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
-      - channel: 'stable'
+      - uses: subosito/flutter-action@v2
+          with:
+            channel: 'stable'
+      - run: flutter pub get
       - run: flutter build web
 
       # copy file for netlify.toml
@@ -276,11 +279,13 @@ jobs:
 
   build_android:
     needs: setup
-#    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
-      - channel: 'stable'
+      - uses: subosito/flutter-action@v2
+          with:
+            channel: 'stable'
+      - run: flutter pub get
       - run: flutter build apk
-
 
       - name: Deploy Android release
         uses: actions/upload-artifact@v1
